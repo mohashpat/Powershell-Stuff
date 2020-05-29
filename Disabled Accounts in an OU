@@ -1,0 +1,3 @@
+Search-ADAccount -UsersOnly -AccountDisabled -SearchBase "OU=" |
+sort LastLogonDate | Select DistinguishedName,Name,samaccountname,LastLogonDate|
+Export-CSV -NoType c:\DisabledUsers.csv
