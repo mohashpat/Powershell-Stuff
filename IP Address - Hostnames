@@ -1,0 +1,9 @@
+Import-Csv C:\ip.csv | ForEach-Object{
+$hostname = ([System.Net.Dns]::GetHostByAddress($_.IPAddress)).Hostname
+if($? -eq $False){
+$hostname="Cannot resolve hostname"
+}
+New-Object -TypeName PSObject -Property @{
+      IPAddress = $_.IPAddress
+      HostName = $hostname
+}} | Export-Csv C:\hsotname.csv -NoTypeInformation -Encoding UTF8 
